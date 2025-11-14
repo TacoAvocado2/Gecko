@@ -1,1 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Geckocoin — Whitepaper v1.0</title>
+  <meta name="description" content="Geckocoin (GEC) — Whitepaper Version 1.0 (Jan 2022). Vision, Roadmap, Coin Specification, Masternodes, Mining & Rewards, Contact." />
+  <meta name="theme-color" content="#16324a" />
+  <style>
+    :root {
+      --bg: #0f1724;
+      --panel: #0b1220;
+      --muted: #9fb0c2;
+      --accent: #66d2b3;
+      --maxw: 980px;
+      --content-pad: 26px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: linear-gradient(180deg,#07101a 0%, #0b1724 100%);
+      color:#e7f0f6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;
+      justify-content:center;
+      padding:36px 16px;
+      line-height:1.55;
+    }
+    .container{
+      width:100%;
+      max-width:var(--maxw);
+    }
+    header{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      margin-bottom:20px;
+    }
+    .brand img {
+      width:64px;
+      height:64px;
+      border-radius:10px;
+      object-fit:contain;
+      box-shadow:0 8px 24px rgba(2,6,23,0.6);
+    }
+    h1{margin:0;font-size:22px}
+    .meta{color:var(--muted);font-size:13px;margin-top:4px}
+    main{
+      margin-top:14px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:12px;
+      padding:18px;
+      box-shadow:0 10px 30px rgba(2,6,23,0.6);
+    }
+    .layout{
+      display:grid;
+      grid-template-columns: 1fr 280px;
+      gap:18px;
+    }
+    @media (max-width:920px){ .layout{grid-template-columns:1fr} }
+    article{
+      background:transparent;
+      padding:var(--content-pad);
+      border-radius:8px;
+    }
+    aside{
+      background:rgba(255,255,255,0.02);
+      border-radius:8px;
+      padding:16px;
+      font-size:14px;
+      color:var(--muted);
+      height:fit-content;
+    }
+    nav.toc ul{list-style:none;padding:0;margin:6px 0 0 0}
+    nav.toc li{margin:8px 0}
+    nav.toc a{color:var(--muted);text-decoration:none}
+    nav.toc a:hover{color:#fff}
+    h2{margin-top:4px;margin-bottom:8px}
+    h3{margin-top:18px;margin-bottom:8px}
+    p{margin:10px 0}
+    pre.code{
+      background:#07121a;padding:12px;border-radius:8px;color:var(--muted);overflow:auto;font-family:SFMono-Regular,Menlo,monospace;font-size:13px;
+    }
+    .spec-table{width:100%;border-collapse:collapse;margin-top:8px}
+    .spec-table th, .spec-table td{border-bottom:1px solid rgba(255,255,255,0.04);padding:8px;text-align:left}
+    .contacts a{color:var(--accent);text-decoration:none}
+    footer{color:var(--muted);font-size:13px;margin-top:16px;padding-top:8px;border-top:1px dashed rgba(255,255,255,0.02)}
+    .disclaimer{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00)); padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.02); color: #f1f5f9}
+    .toc-title{font-weight:700;color:var(--accent);margin-bottom:6px}
+    .anchor-link{font-size:12px;color:var(--muted);text-decoration:none;margin-left:8px}
+  </style>
+</head>
+<body>
+  <div class="container" role="main">
+    <header>
+      <div class="brand">
+        <img src="logo.png" alt="Geckocoin Logo">
+      </div>
+      <div>
+        <h1>Geckocoin — Whitepaper</h1>
+        <div class="meta">Whitepaper Version 1.0 — January 2022</div>
+      </div>
+    </header>
 
+    <main>
+      <div class="layout">
+        <article aria-labelledby="whitepaper-title">
+          <section id="whitepaper-title">
+            <h2>Whitepaper — Geckocoin (GEC)</h2>
+            <div class="disclaimer" aria-label="Disclaimer">
+              <strong>DISCLAIMER</strong><br>
+              <strong>PLEASE READ THIS DISCLAIMER SECTION CAREFULLY. IF YOU ARE IN ANY DOUBT REGARDING THE ACTION YOU SHOULD TAKE, YOU SHOULD CONSULT YOUR LEGAL, FINANCIAL, TAX, OR OTHER PROFESSIONAL ADVISOR(S).</strong>
+              <p>The information within this document is an inclusive list and does not imply any part of a contractual relationship. While we make every effort to ensure that any material in this white paper is accurate and up-to-date, such material in no way constitutes the provision of professional advice. The Geckocoin team does not accept legal liability whatsoever arising from or connected to the accuracy, reliability, currency, or completeness of any material in this whitepaper.</p>
+              <p>Investors and potential Geckocoin (GEC) coin holders should seek independent professional advice prior to relying on or entering any commitment or transaction based on this whitepaper; material within is purely published for reference purposes alone. GEC coins are not intended to constitute securities in any jurisdiction. This whitepaper does not constitute a prospectus, and is not intended to constitute an offer of securities or a solicitation for investment in securities in any jurisdiction.</p>
+              <p>The Geckocoin team does not provide any opinion or advice to purchase, sell, or otherwise transact with GEC coins. Presentation of this whitepaper shall not form the basis of, or be relied upon in connection with, any contract or investment decision. No person is bound to enter into any contract or binding legal commitment in relation to the sale or purchase of GEC coins, and no cryptocurrency or another form of payment is to be accepted on the basis of this white paper.</p>
+            </div>
+          </section>
+
+          <section id="table-of-contents" aria-labelledby="toc-heading">
+            <h3 id="toc-heading">Table of Contents</h3>
+            <ol>
+              <li><a href="#abstract">Abstract</a></li>
+              <li><a href="#vismis">Our Vision & Mission</a></li>
+              <li><a href="#whatis">What is Geckocoin (GEC)?</a></li>
+              <li><a href="#roadmap">Roadmap</a></li>
+              <li><a href="#specification">Coin Specification</a></li>
+              <li><a href="#masternodes">Masternodes</a></li>
+              <li><a href="#tokenomics">Mining & Reward</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ol>
+          </section>
+
+          <section id="abstract">
+            <h3>1. Abstract</h3>
+            <p>We live in the digital age. The gaming industry is developing more and more, becoming an inevitable part of our daily lives. Likewise, the adoption of blockchain technology and cryptocurrencies is growing exponentially and will soon become a top priority in our daily financial transactions.</p>
+            <p>We believe that a well-designed and easily accessible cryptocurrency should provide the same range of user adoption as the gaming industry, and therefore it is only natural that the next phase of blockchain and cryptocurrency adoption will occur in the gaming industry. The time and effort that users put into games can become real digital value.</p>
+            <p>Our Geckocoin team believes that video game users should not only have fun, but also be rewarded and motivated. Our idea is to help people use cryptocurrency in video games, where your achievements will have value. The video game market is huge. About a third of the world population — ~2.96 billion people — play video games; by contrast, only about 3.9% of users in the world own cryptocurrency. The gaming industry is the next frontier for cryptocurrencies because the gaming industry is huge and will attract millions of people. Therefore, we expect to play a key role in the introduction of cryptocurrencies into video games, using our Geckocoin as a means of payment.</p>
+          </section>
+
+          <section id="vismis">
+            <h3>2. Our Vision & Mission</h3>
+            <h4>Vision</h4>
+            <p>Geckocoin's vision is to make it as easy as possible for the gaming industry to use cryptocurrencies. At the same time, Geckocoin focuses on the development of indie games and the introduction of the use of cryptocurrency.</p>
+            <h4>Mission</h4>
+            <p>The mission of Geckocoin is to provide an entertainment platform with a wide range of games that will intuitively facilitate the use of cryptocurrency.</p>
+          </section>
+
+          <section id="whatis">
+            <h3>3. What is Geckocoin (GEC)?</h3>
+            <p>Geckocoin (GEC) is a blockchain project that promotes and integrates cryptocurrency into game projects. Anyone can play games, even with minimal knowledge of cryptocurrencies. Geckocoin will be the catalyst that will put cryptocurrency in the hands of the masses through video games.</p>
+          </section>
+
+          <section id="roadmap">
+            <h3>4. Roadmap</h3>
+            <p>We have many plans and ideas that we want to implement; we hope for your support. The roadmap can be updated regardless of the period.</p>
+          </section>
+
+          <section id="specification">
+            <h3>5. Coin Specification</h3>
+            <table class="spec-table" role="table" aria-label="Coin specification">
+              <tr><th>Total Supply</th><td>21,000,000,000 GEC</td></tr>
+              <tr><th>Ticker</th><td>GEC</td></tr>
+              <tr><th>Algorithm</th><td>GhostRider</td></tr>
+              <tr><th>Block Reward</th><td>5,000 GEC</td></tr>
+              <tr><th>Reward Commissions</th><td>2%</td></tr>
+              <tr><th>51% Protection</th><td>Yes</td></tr>
+            </table>
+
+            <h4>Features</h4>
+            <ul>
+              <li><strong>Bulletproof for ASIC/FPGA</strong> — Robust GhostRider algorithm with protection from specialized hardware such as ASICs and FPGAs.</li>
+              <li><strong>Attack Defense (51%)</strong> — Protection with confident security against a 51% attack or double-spending.</li>
+              <li><strong>Issue / Awards</strong> — Geckocoin uses a tiered Smart Node collateral and reward system to help prevent hyperinflation.</li>
+            </ul>
+          </section>
+
+          <section id="masternodes">
+            <h3>6. Masternodes</h3>
+            <p>Masternodes are nodes that are rewarded for maintaining the network. Rewards are based on the availability of a node and its ability to serve the network on a decentralized chain. A deposit of <strong>800,000 GEC</strong> coins is required to run a masternode. Masternodes are a fundamental requirement of the Geckocoin network to support the blockchain.</p>
+          </section>
+
+          <section id="tokenomics">
+            <h3>7. Mining & Reward</h3>
+            <p>The total number of coins is <strong>21,000,000,000 GEC</strong>. The development team is deducted 2% from each transaction. Geckocoin can be mined with CPU or GPU using the GhostRider algorithm. Geckocoin is resistant to ASICs, which are known to consume a lot of power. A new block is minted every two minutes.</p>
+
+            <p><strong>Block reward distribution (per block):</strong></p>
+            <ul>
+              <li>3,900 GEC — miners</li>
+              <li>1,000 GEC — smartnode (masternode) owners</li>
+              <li>100 GEC — developer fund</li>
+            </ul>
+
+            <h4>Mining options</h4>
+            <ol>
+              <li>Run the GUI wallet, open the Debug Console, and use the `setgenerate true &lt;threads&gt;` command to mine locally.</li>
+              <li>Use a mining pool: download the miner configured for GhostRider, set the worker params and pool address, and begin mining. (Pools and configuration resources may be available via community channels.)</li>
+            </ol>
+          </section>
+
+          <section id="contact">
+            <h3>8. Contact</h3>
+            <div class="contacts">
+              <p>Website: <a href="https://gecko.mn" target="_blank" rel="noopener">gecko.mn</a></p>
+              <p>Explorer: <a href="https://gecko.mn/explorer" target="_blank" rel="noopener">gecko.mn/explorer</a></p>
+              <p>Alternative Explorer: <a href="https://block.gecko.mn/" target="_blank" rel="noopener">block.gecko.mn</a></p>
+              <p>Official Pool: <a href="https://gecko.mn/pool" target="_blank" rel="noopener">gecko.mn/pool</a></p>
+              <p>Twitter: <a href="https://twitter.com/geckocoin_mn" target="_blank" rel="noopener">@geckocoin_mn</a></p>
+              <p>Discord: <a href="https://discord.gg/YVkgrSkQCS" target="_blank" rel="noopener">discord.gg/YVkgrSkQCS</a></p>
+              <p>Github: <a href="https://github.com/GeckoProjectMN" target="_blank" rel="noopener">github.com/GeckoProjectMN</a></p>
+              <p>Bitcointalk: <a href="https://bitcointalk.org/index.php?topic=5428262" target="_blank" rel="noopener">bitcointalk.org</a></p>
+              <p>Geckoman Game: <a href="https://geckoman.gecko.mn/" target="_blank" rel="noopener">geckoman.gecko.mn</a></p>
+              <p>Email: <a href="mailto:support@hello.gecko.mn">support@hello.gecko.mn</a></p>
+            </div>
+          </section>
+
+          <footer>
+            <div>© Geckocoin — Whitepaper Version 1.0</div>
+          </footer>
+        </article>
+
+        <aside aria-labelledby="toc-heading-aside">
+          <div class="toc-title">Quick Navigation</div>
+          <nav class="toc" aria-label="Table of contents">
+            <ul>
+              <li><a href="#abstract">1. Abstract</a></li>
+              <li><a href="#vismis">2. Vision & Mission</a></li>
+              <li><a href="#whatis">3. What is GEC?</a></li>
+              <li><a href="#roadmap">4. Roadmap</a></li>
+              <li><a href="#specification">5. Specification</a></li>
+              <li><a href="#masternodes">6. Masternodes</a></li>
+              <li><a href="#tokenomics">7. Mining & Reward</a></li>
+              <li><a href="#contact">8. Contact</a></li>
+            </ul>
+          </nav>
+        </aside>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
